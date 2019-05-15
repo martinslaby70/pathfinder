@@ -84,7 +84,7 @@ namespace pathfinder
             while (true)
             {
                 int temp_pocet = pocetkroku;
-               MessageBox.Show(pocetkroku.ToString());
+               //MessageBox.Show(pocetkroku.ToString());
                 double temp1 = 0, temp2 = 0, temp3 = 0, temp4 = 0;
 
 
@@ -117,6 +117,7 @@ namespace pathfinder
                                 pocetkroku++;
                                 vzdalenost = temp1;
                                 Label label = labels[zacatek_y, zacatek_x];
+                                prekazky.Add(label);
                                 label.BackColor = Color.Orange;
                             }
 
@@ -149,6 +150,7 @@ namespace pathfinder
                                 pocetkroku++;
                                 vzdalenost = temp2;
                                 Label label = labels[zacatek_y, zacatek_x];
+                                prekazky.Add(label);
                                 label.BackColor = Color.Orange;
                             }
 
@@ -180,6 +182,7 @@ namespace pathfinder
                                 pocetkroku++;
                                 vzdalenost = temp3;
                                 Label label = labels[zacatek_y, zacatek_x];
+                                prekazky.Add(label);
                                 label.BackColor = Color.Orange;
                             }
 
@@ -212,7 +215,9 @@ namespace pathfinder
                                 pocetkroku++;
                                 vzdalenost = temp4;
                                 Label label = labels[zacatek_y, zacatek_x];
+                                prekazky.Add(label);
                                 label.BackColor = Color.Orange;
+
                             }
 
                         }
@@ -228,10 +233,12 @@ namespace pathfinder
                         double[] nejmensiVypocet = Find.lowest(temporary);
                         if (nejmensiVypocet[2] == temp1)
                         {
+
                             zacatek_x++;
                             pocetkroku++;
                             vzdalenost = temp1;
                             Label label = labels[zacatek_y, zacatek_x];
+                            prekazky.Add(label);
                             label.BackColor = Color.Orange;
                         }
                         else if (nejmensiVypocet[2] == temp2)
@@ -240,6 +247,7 @@ namespace pathfinder
                             pocetkroku++;
                             vzdalenost = temp2;
                             Label label = labels[zacatek_y, zacatek_x];
+                            prekazky.Add(label);
                             label.BackColor = Color.Orange;
                         }
                         else if (nejmensiVypocet[2] == temp3)
@@ -248,6 +256,7 @@ namespace pathfinder
                             pocetkroku++;
                             vzdalenost = temp3;
                             Label label = labels[zacatek_y, zacatek_x];
+                            prekazky.Add(label);
                             label.BackColor = Color.Orange;
                         }
                         else if (nejmensiVypocet[2] == temp4)
@@ -256,6 +265,7 @@ namespace pathfinder
                             pocetkroku++;
                             vzdalenost = temp4;
                             Label label = labels[zacatek_y, zacatek_x];
+                            prekazky.Add(label);
                             label.BackColor = Color.Orange;
                         }
                         //MessageBox.Show($"{temp1} : {nejmensiVypocet[2]}\n{temp2} : {nejmensiVypocet[2]}\n{temp3} : {nejmensiVypocet[2]}\n{temp4} : {nejmensiVypocet[2]}\n");
