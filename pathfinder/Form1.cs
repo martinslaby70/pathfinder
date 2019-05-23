@@ -35,7 +35,12 @@ namespace pathfinder
 
         private void button2_Click(object sender, EventArgs e)
         {
-            Find.go();
+            Find.go(info_time, info_moves);
+        }
+
+        private void label313_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

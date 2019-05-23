@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Drawing;
+using System.Diagnostics;
 
 namespace pathfinder
 {
@@ -14,7 +15,7 @@ namespace pathfinder
 
         static public Label zacatek_label;
         static public Label konec_label;
-
+        static public Stopwatch watch = new Stopwatch();
         public static List<Label> prekazky = new List<Label>();
 
         public static bool zacatek { get; private set; }
@@ -67,16 +68,15 @@ namespace pathfinder
 
         }
 
-        internal static void go()
+        internal static void go(Label info_cas, Label info_moves)
         {
-            int[,] souradnice = Find.getlocation();
-          
+            int[,] souradnice = Find.getlocation();         
             int pocetkroku = 0;
             int zacatek_y = souradnice[0, 0];
             int zacatek_x = souradnice[0, 1];
             int konec_y = souradnice[1, 0];
             int konec_x = souradnice[1, 1];
-
+            watch.Start();
             
             double vzdalenost = Math.Sqrt((zacatek_y - konec_y) * (zacatek_y - konec_y) + (zacatek_x - konec_x)*(zacatek_x - konec_x));
            
@@ -84,16 +84,16 @@ namespace pathfinder
             while (true)
             {
                 int temp_pocet = pocetkroku;
-               //MessageBox.Show(pocetkroku.ToString());
+                double start_time = DateTime.Now.Millisecond;
+                MessageBox.Show(pocetkroku.ToString());
                 double temp1 = 0, temp2 = 0, temp3 = 0, temp4 = 0;
 
 
 
-                bool bool1 = true, bool2 = true, bool3 = true, bool4 = true;
+                bool JdeTo = false;
                 for (int i = 0; i <= 4; i++) //nejlepsi mozny pohyb
                 {
-
-                    
+                   
                     if (i == 0)
                     {
                         zacatek_x++;
@@ -113,7 +113,7 @@ namespace pathfinder
                             else
                             {
 
-                                bool1 = false;
+                                JdeTo = true;
                                 pocetkroku++;
                                 vzdalenost = temp1;
                                 Label label = labels[zacatek_y, zacatek_x];
@@ -146,7 +146,7 @@ namespace pathfinder
                             else
                             {
 
-                                bool2 = false;
+                                JdeTo = true;
                                 pocetkroku++;
                                 vzdalenost = temp2;
                                 Label label = labels[zacatek_y, zacatek_x];
@@ -178,7 +178,7 @@ namespace pathfinder
                             }
                             else
                             {
-                                bool3 = false;
+                                JdeTo = true;
                                 pocetkroku++;
                                 vzdalenost = temp3;
                                 Label label = labels[zacatek_y, zacatek_x];
@@ -211,7 +211,7 @@ namespace pathfinder
                             else
                             {
 
-                                bool4 = false;
+                                JdeTo = true;
                                 pocetkroku++;
                                 vzdalenost = temp4;
                                 Label label = labels[zacatek_y, zacatek_x];
@@ -226,66 +226,178 @@ namespace pathfinder
                             zacatek_y++;
                         }
                     }
-                    else if ((i == 4) && ((bool1 && bool2 && bool3 && bool4) == true))
+                    else if ((i == 4) && (!JdeTo))
                     {
-                        
+                        //MessageBox.Show("got here");
                         double[] temporary = { temp1, temp2, temp3, temp4 };
                         double[] nejmensiVypocet = Find.lowest(temporary);
+                        bool jde2cesta = false;
                         if (nejmensiVypocet[2] == temp1)
                         {
-
                             zacatek_x++;
-                            pocetkroku++;
-                            vzdalenost = temp1;
-                            Label label = labels[zacatek_y, zacatek_x];
-                            prekazky.Add(label);
-                            label.BackColor = Color.Orange;
+                            if (!prekazky.Contains(labels[zacatek_y, zacatek_x]))
+                            {
+                                
+                                pocetkroku++;
+                                vzdalenost = temp1;
+                                Label label = labels[zacatek_y, zacatek_x];
+                                prekazky.Add(label);
+                                label.BackColor = Color.Orange;
+                                jde2cesta = true;
+                            }
+                            else
+                            {
+                                zacatek_x--;
+                            }
+                            
                         }
                         else if (nejmensiVypocet[2] == temp2)
                         {
+                           
                             zacatek_x--;
-                            pocetkroku++;
-                            vzdalenost = temp2;
-                            Label label = labels[zacatek_y, zacatek_x];
-                            prekazky.Add(label);
-                            label.BackColor = Color.Orange;
+                            if (!prekazky.Contains(labels[zacatek_y, zacatek_x]))
+                            {
+                                
+                                pocetkroku++;
+                                vzdalenost = temp2;
+                                Label label = labels[zacatek_y, zacatek_x];
+                                prekazky.Add(label);
+                                label.BackColor = Color.Orange;
+                                jde2cesta = true;
+                            }
+                            else
+                            {
+                                zacatek_x++;
+                            }
+                            
+
                         }
                         else if (nejmensiVypocet[2] == temp3)
                         {
+                            
                             zacatek_y++;
-                            pocetkroku++;
-                            vzdalenost = temp3;
-                            Label label = labels[zacatek_y, zacatek_x];
-                            prekazky.Add(label);
-                            label.BackColor = Color.Orange;
+                            if (!prekazky.Contains(labels[zacatek_y, zacatek_x]))
+                            {
+                                
+                                pocetkroku++;
+                                vzdalenost = temp3;
+                                Label label = labels[zacatek_y, zacatek_x];
+                                prekazky.Add(label);
+                                label.BackColor = Color.Orange;
+                                jde2cesta = true;
+
+                            }
+                            else
+                            {
+                                zacatek_y--;
+                            }
+                            
                         }
                         else if (nejmensiVypocet[2] == temp4)
                         {
+                            
                             zacatek_y--;
-                            pocetkroku++;
-                            vzdalenost = temp4;
-                            Label label = labels[zacatek_y, zacatek_x];
-                            prekazky.Add(label);
-                            label.BackColor = Color.Orange;
+                            if (!prekazky.Contains(labels[zacatek_y, zacatek_x]))
+                            {
+                                
+                                pocetkroku++;
+                                vzdalenost = temp4;
+                                Label label = labels[zacatek_y, zacatek_x];
+                                prekazky.Add(label);
+                                label.BackColor = Color.Orange;
+                                jde2cesta = true;
+                            }
+                            else
+                            {
+                                zacatek_y++;
+                            }
+                           
                         }
+                        else if (!jde2cesta)
+                        {
+                            MessageBox.Show("also got here");
+                            if (nejmensiVypocet[3] == temp1)
+                            {
+                                zacatek_x++;
+                                if (prekazky.Contains(labels[zacatek_y, zacatek_x]))
+                                {
+
+                                    pocetkroku++;
+                                    vzdalenost = temp1;
+                                    Label label = labels[zacatek_y, zacatek_x];
+                                    prekazky.Add(label);
+                                    label.BackColor = Color.Orange;
+                                    jde2cesta = true;
+                                }
+                                zacatek_x--;
+                            }
+                            else if (nejmensiVypocet[3] == temp2)
+                            {
+                                zacatek_x--;
+                                if (prekazky.Contains(labels[zacatek_y, zacatek_x]))
+                                {
+
+                                    pocetkroku++;
+                                    vzdalenost = temp2;
+                                    Label label = labels[zacatek_y, zacatek_x];
+                                    prekazky.Add(label);
+                                    label.BackColor = Color.Orange;
+                                    jde2cesta = true;
+                                }
+                                zacatek_x++;
+
+                            }
+                            else if (nejmensiVypocet[3] == temp3)
+                            {
+                                zacatek_y++;
+                                if (prekazky.Contains(labels[zacatek_y, zacatek_x]))
+                                {
+
+                                    pocetkroku++;
+                                    vzdalenost = temp3;
+                                    Label label = labels[zacatek_y, zacatek_x];
+                                    prekazky.Add(label);
+                                    label.BackColor = Color.Orange;
+                                    jde2cesta = true;
+
+                                }
+                                zacatek_y--;
+                            }
+                            else if (nejmensiVypocet[3] == temp4)
+                            {
+                                zacatek_y--;
+                                if (true)
+                                {
+
+                                    pocetkroku++;
+                                    vzdalenost = temp4;
+                                    Label label = labels[zacatek_y, zacatek_x];
+                                    prekazky.Add(label);
+                                    label.BackColor = Color.Orange;
+                                    jde2cesta = true;
+                                }
+                                zacatek_y++;
+                            }
+                            else
+                            {
+                                MessageBox.Show("nope");
+                            }
+                        }
+                        
                         //MessageBox.Show($"{temp1} : {nejmensiVypocet[2]}\n{temp2} : {nejmensiVypocet[2]}\n{temp3} : {nejmensiVypocet[2]}\n{temp4} : {nejmensiVypocet[2]}\n");
 
                     }
 
 
+
+
+
                 }
-                
-
-                
-
-
-                //zkontrolovat jestli neni v prekazkach -> vybrat 2 nejmensi atd.. vpripade ze jsou v prekazkach vsechny -> o krok z5 a vybrat 2 nejmensi vzdalenost
-
-
-
-                if (vzdalenost == 1)
+                if (vzdalenost <= 1)
                 {
-                    MessageBox.Show($"win\nPočet kroků: {pocetkroku}");
+                    watch.Stop();
+                    info_cas.Text = watch.Elapsed.TotalMilliseconds.ToString() + "ms";
+                    info_moves.Text = pocetkroku.ToString();
                     break;
                 }
                

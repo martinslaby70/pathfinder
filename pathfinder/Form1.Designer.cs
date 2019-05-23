@@ -41,7 +41,7 @@
             // 
             this.info_moves.AutoSize = true;
             this.info_moves.Font = new System.Drawing.Font("Microsoft YaHei", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.info_moves.Location = new System.Drawing.Point(1132, 12);
+            this.info_moves.Location = new System.Drawing.Point(1147, 12);
             this.info_moves.Name = "info_moves";
             this.info_moves.Size = new System.Drawing.Size(0, 28);
             this.info_moves.TabIndex = 312;
@@ -50,7 +50,7 @@
             // 
             this.info_time.AutoSize = true;
             this.info_time.Font = new System.Drawing.Font("Microsoft YaHei", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.info_time.Location = new System.Drawing.Point(899, 39);
+            this.info_time.Location = new System.Drawing.Point(1147, 39);
             this.info_time.Name = "info_time";
             this.info_time.Size = new System.Drawing.Size(0, 28);
             this.info_time.TabIndex = 313;
@@ -61,9 +61,10 @@
             this.label313.Font = new System.Drawing.Font("Microsoft YaHei", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.label313.Location = new System.Drawing.Point(839, 9);
             this.label313.Name = "label313";
-            this.label313.Size = new System.Drawing.Size(293, 28);
+            this.label313.Size = new System.Drawing.Size(302, 28);
             this.label313.TabIndex = 314;
-            this.label313.Text = "Počet navšívených dlaždic:";
+            this.label313.Text = "Počet navštívených dlaždic:";
+            this.label313.Click += new System.EventHandler(this.label313_Click);
             // 
             // label314
             // 
