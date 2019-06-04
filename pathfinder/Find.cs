@@ -84,7 +84,6 @@ namespace pathfinder
             while (true)
             {
                 int temp_pocet = pocetkroku;
-                double start_time = DateTime.Now.Millisecond;
                 MessageBox.Show(pocetkroku.ToString());
                 double temp1 = 0, temp2 = 0, temp3 = 0, temp4 = 0;
 
@@ -127,7 +126,7 @@ namespace pathfinder
                             zacatek_x--;
                         }
                     }                   
-                    else if (i == 1)
+                    if (i == 1)
                     {
                         zacatek_x--;
                         if (zacatek_x < 0)
@@ -160,7 +159,7 @@ namespace pathfinder
                             zacatek_x++;
                         }
                     }
-                    else if (i == 2)
+                    if (i == 2)
                     {
                         zacatek_y++;
                         if (zacatek_y > 20)
@@ -192,7 +191,7 @@ namespace pathfinder
                             zacatek_y--;
                         }
                     }
-                    else if (i == 3)
+                    if (i == 3)
                     {
                         zacatek_y--;
                         if (zacatek_y < 0)
@@ -226,13 +225,14 @@ namespace pathfinder
                             zacatek_y++;
                         }
                     }
-                    else if ((i == 4) && (!JdeTo))
+                    if ((i == 4) && (!JdeTo))
                     {
-                        //MessageBox.Show("got here");
+                        MessageBox.Show("got here");
                         double[] temporary = { temp1, temp2, temp3, temp4 };
                         double[] nejmensiVypocet = Find.lowest(temporary);
+                        //MessageBox.Show($"1 = {nejmensiVypocet[0]}\n2 = {nejmensiVypocet[1]}\n3 = {nejmensiVypocet[2]}\n4 = {nejmensiVypocet[3]}");
                         bool jde2cesta = false;
-                        if (nejmensiVypocet[2] == temp1)
+                        if (nejmensiVypocet[1] == temp1)
                         {
                             zacatek_x++;
                             if (!prekazky.Contains(labels[zacatek_y, zacatek_x]))
@@ -251,7 +251,7 @@ namespace pathfinder
                             }
                             
                         }
-                        else if (nejmensiVypocet[2] == temp2)
+                        else if (nejmensiVypocet[1] == temp2)
                         {
                            
                             zacatek_x--;
@@ -272,7 +272,7 @@ namespace pathfinder
                             
 
                         }
-                        else if (nejmensiVypocet[2] == temp3)
+                        else if (nejmensiVypocet[1] == temp3)
                         {
                             
                             zacatek_y++;
@@ -293,7 +293,7 @@ namespace pathfinder
                             }
                             
                         }
-                        else if (nejmensiVypocet[2] == temp4)
+                        else if (nejmensiVypocet[1] == temp4)
                         {
                             
                             zacatek_y--;
@@ -313,10 +313,12 @@ namespace pathfinder
                             }
                            
                         }
-                        else if (!jde2cesta)
+
+                        if (!jde2cesta)
                         {
+                            bool jde3cesta = false;
                             MessageBox.Show("also got here");
-                            if (nejmensiVypocet[3] == temp1)
+                            if (nejmensiVypocet[2] == temp1)
                             {
                                 zacatek_x++;
                                 if (prekazky.Contains(labels[zacatek_y, zacatek_x]))
@@ -327,11 +329,11 @@ namespace pathfinder
                                     Label label = labels[zacatek_y, zacatek_x];
                                     prekazky.Add(label);
                                     label.BackColor = Color.Orange;
-                                    jde2cesta = true;
+                                    jde3cesta = true;
                                 }
                                 zacatek_x--;
                             }
-                            else if (nejmensiVypocet[3] == temp2)
+                            else if (nejmensiVypocet[2] == temp2)
                             {
                                 zacatek_x--;
                                 if (prekazky.Contains(labels[zacatek_y, zacatek_x]))
@@ -342,12 +344,12 @@ namespace pathfinder
                                     Label label = labels[zacatek_y, zacatek_x];
                                     prekazky.Add(label);
                                     label.BackColor = Color.Orange;
-                                    jde2cesta = true;
+                                    jde3cesta = true;
                                 }
                                 zacatek_x++;
 
                             }
-                            else if (nejmensiVypocet[3] == temp3)
+                            else if (nejmensiVypocet[2] == temp3)
                             {
                                 zacatek_y++;
                                 if (prekazky.Contains(labels[zacatek_y, zacatek_x]))
@@ -358,12 +360,12 @@ namespace pathfinder
                                     Label label = labels[zacatek_y, zacatek_x];
                                     prekazky.Add(label);
                                     label.BackColor = Color.Orange;
-                                    jde2cesta = true;
+                                    jde3cesta = true;
 
                                 }
                                 zacatek_y--;
                             }
-                            else if (nejmensiVypocet[3] == temp4)
+                            else if (nejmensiVypocet[2] == temp4)
                             {
                                 zacatek_y--;
                                 if (true)
@@ -374,17 +376,79 @@ namespace pathfinder
                                     Label label = labels[zacatek_y, zacatek_x];
                                     prekazky.Add(label);
                                     label.BackColor = Color.Orange;
-                                    jde2cesta = true;
+                                    jde3cesta = true;
                                 }
                                 zacatek_y++;
                             }
-                            else
+
+                            if (!jde3cesta)
                             {
-                                MessageBox.Show("nope");
+                                MessageBox.Show("good path m8");
+                                if (nejmensiVypocet[3] == temp1)
+                                {
+                                    zacatek_x++;
+                                    if (prekazky.Contains(labels[zacatek_y, zacatek_x]))
+                                    {
+
+                                        pocetkroku++;
+                                        vzdalenost = temp1;
+                                        Label label = labels[zacatek_y, zacatek_x];
+                                        prekazky.Add(label);
+                                        label.BackColor = Color.Orange;
+                                        jde3cesta = true;
+                                    }
+                                    zacatek_x--;
+                                }
+                                else if (nejmensiVypocet[3] == temp2)
+                                {
+                                    zacatek_x--;
+                                    if (prekazky.Contains(labels[zacatek_y, zacatek_x]))
+                                    {
+
+                                        pocetkroku++;
+                                        vzdalenost = temp2;
+                                        Label label = labels[zacatek_y, zacatek_x];
+                                        prekazky.Add(label);
+                                        label.BackColor = Color.Orange;
+                                        jde3cesta = true;
+                                    }
+                                    zacatek_x++;
+
+                                }
+                                else if (nejmensiVypocet[3] == temp3)
+                                {
+                                    zacatek_y++;
+                                    if (prekazky.Contains(labels[zacatek_y, zacatek_x]))
+                                    {
+
+                                        pocetkroku++;
+                                        vzdalenost = temp3;
+                                        Label label = labels[zacatek_y, zacatek_x];
+                                        prekazky.Add(label);
+                                        label.BackColor = Color.Orange;
+                                        jde3cesta = true;
+
+                                    }
+                                    zacatek_y--;
+                                }
+                                else if (nejmensiVypocet[3] == temp4)
+                                {
+                                    zacatek_y--;
+                                    if (true)
+                                    {
+
+                                        pocetkroku++;
+                                        vzdalenost = temp4;
+                                        Label label = labels[zacatek_y, zacatek_x];
+                                        prekazky.Add(label);
+                                        label.BackColor = Color.Orange;
+                                        jde3cesta = true;
+                                    }
+                                    zacatek_y++;
+                                }
                             }
                         }
                         
-                        //MessageBox.Show($"{temp1} : {nejmensiVypocet[2]}\n{temp2} : {nejmensiVypocet[2]}\n{temp3} : {nejmensiVypocet[2]}\n{temp4} : {nejmensiVypocet[2]}\n");
 
                     }
 
@@ -457,40 +521,41 @@ namespace pathfinder
             double firstmin = int.MaxValue;
             double secmin = int.MaxValue;
             double thirdmin = int.MaxValue;
+            double fourthmin = int.MaxValue;
 
             for (int i = 0; i < n; i++)
             {
-                
+
                 if (array[i] < firstmin)
                 {
+                    fourthmin = thirdmin;
                     thirdmin = secmin;
                     secmin = firstmin;
                     firstmin = array[i];
                 }
 
-                
+
                 else if (array[i] < secmin)
                 {
+                    fourthmin = thirdmin;
                     thirdmin = secmin;
                     secmin = array[i];
                 }
 
-              
+
                 else if (array[i] < thirdmin)
+                {
+                    fourthmin = thirdmin;
                     thirdmin = array[i];
+                }
+
+                else if (array[i] < fourthmin)
+                {
+                    fourthmin = array[i];
+                }
             }
 
-
-
-
-
-
-
-
-
-
-
-            double[] vysledek = { firstmin, secmin, thirdmin};
+            double[] vysledek = { firstmin, secmin, thirdmin, fourthmin};
             return vysledek;
         }
        
