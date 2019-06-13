@@ -155,7 +155,7 @@ namespace pathfinder
                         bool jde1cesta = false;
 
 
-                        MessageBox.Show("1 cesta");
+                        //MessageBox.Show("1 cesta");
                         if (nejmensiVypocet[0] == temp1)
                         {
                             zacatek_x++;
@@ -240,7 +240,7 @@ namespace pathfinder
 
                         if (!jde1cesta)
                         {
-                            MessageBox.Show("2 cesta");
+                            //MessageBox.Show("2 cesta");
                             bool jde2cesta = false;
                             if (nejmensiVypocet[1] == temp1)
                             {
@@ -327,7 +327,7 @@ namespace pathfinder
                             if (!jde2cesta)
                             {
                                 bool jde3cesta = false;
-                                MessageBox.Show("3 cesta");
+                                //MessageBox.Show("3 cesta");
                                 if (nejmensiVypocet[2] == temp1)
                                 {
                                     zacatek_x++;
@@ -409,7 +409,7 @@ namespace pathfinder
 
                                 if (!jde3cesta)
                                 {
-                                    MessageBox.Show("4 cesta");
+                                   // MessageBox.Show("4 cesta");
                                     if (nejmensiVypocet[3] == temp1)
                                     {
                                         zacatek_x++;

@@ -8,3 +8,13 @@ C:\Users\Martin\Desktop\pathfinder\pathfinder\obj\Debug\pathfinder.csproj.Genera
 C:\Users\Martin\Desktop\pathfinder\pathfinder\obj\Debug\pathfinder.csproj.CoreCompileInputs.cache
 C:\Users\Martin\Desktop\pathfinder\pathfinder\obj\Debug\pathfinder.exe
 C:\Users\Martin\Desktop\pathfinder\pathfinder\obj\Debug\pathfinder.pdb
+C:\Users\Martin\Desktop\Nová složka\pathfinder\pathfinder\bin\Debug\pathfinder.exe.config
+C:\Users\Martin\Desktop\Nová složka\pathfinder\pathfinder\bin\Debug\pathfinder.exe
+C:\Users\Martin\Desktop\Nová složka\pathfinder\pathfinder\bin\Debug\pathfinder.pdb
+C:\Users\Martin\Desktop\Nová složka\pathfinder\pathfinder\obj\Debug\pathfinder.csprojAssemblyReference.cache
+C:\Users\Martin\Desktop\Nová složka\pathfinder\pathfinder\obj\Debug\pathfinder.Form1.resources
+C:\Users\Martin\Desktop\Nová složka\pathfinder\pathfinder\obj\Debug\pathfinder.Properties.Resources.resources
+C:\Users\Martin\Desktop\Nová složka\pathfinder\pathfinder\obj\Debug\pathfinder.csproj.GenerateResource.cache
+C:\Users\Martin\Desktop\Nová složka\pathfinder\pathfinder\obj\Debug\pathfinder.csproj.CoreCompileInputs.cache
+C:\Users\Martin\Desktop\Nová složka\pathfinder\pathfinder\obj\Debug\pathfinder.exe
+C:\Users\Martin\Desktop\Nová složka\pathfinder\pathfinder\obj\Debug\pathfinder.pdb

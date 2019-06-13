@@ -83,7 +83,7 @@
             // 
             this.button1.Location = new System.Drawing.Point(844, 784);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(341, 26);
+            this.button1.Size = new System.Drawing.Size(461, 26);
             this.button1.TabIndex = 316;
             this.button1.Text = "Vymaž!";
             this.button1.UseVisualStyleBackColor = true;
@@ -100,7 +100,7 @@
             // 
             this.button2.Location = new System.Drawing.Point(844, 753);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(341, 25);
+            this.button2.Size = new System.Drawing.Size(461, 25);
             this.button2.TabIndex = 318;
             this.button2.Text = "Hledej!";
             this.button2.UseVisualStyleBackColor = true;
@@ -140,7 +140,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1197, 817);
+            this.ClientSize = new System.Drawing.Size(1317, 817);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
