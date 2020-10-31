@@ -2,7 +2,7 @@
 ---
 
 **simple C# app**
-- after you choose 2 solid points UI start finding a path based on a simple algorithm
+- after you choose 2 solid points, program start finding a path based on a simple algorithm
 - you have the ability to add block points    
 - the program counts how many steps were needed to reach end how much time it took 
 
